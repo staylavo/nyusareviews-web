@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NY USA Reviews — Design Tokens (Apple-grade system)
+   Colors are space-separated RGB channels so Tailwind can apply
+   opacity via rgb(var(--token) / <alpha-value>).
+   ============================================================ */
+:root {
+  --paper: 250 250 249;       /* warm near-white background */
+  --surface: 255 255 255;     /* cards */
+  --ink: 17 24 39;            /* near-black text */
+  --muted: 100 116 139;       /* secondary text */
+  --line: 226 232 240;        /* borders */
+  --brand: 37 64 175;         /* confident indigo/blue */
+  --brand-ink: 30 41 110;     /* darker brand for text */
+  --gold: 202 138 4;          /* Best of the Best award */
+  --success: 22 163 74;       /* price drop / in-stock */
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: 13 17 23;
+    --surface: 22 27 34;
+    --ink: 237 240 244;
+    --muted: 148 163 184;
+    --line: 39 45 54;
+    --brand: 129 152 240;
+    --brand-ink: 173 188 247;
+    --gold: 234 179 8;
+    --success: 74 222 128;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: rgb(var(--paper));
+    color: rgb(var(--ink));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: rgb(var(--brand) / 0.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
